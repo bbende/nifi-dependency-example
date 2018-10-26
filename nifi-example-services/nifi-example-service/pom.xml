@@ -23,6 +23,7 @@
     </parent>
 
     <artifactId>nifi-example-service</artifactId>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -30,6 +31,13 @@
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-example-service-api</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-ssl-context-service-api</artifactId>
+            <version>${nifi.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
@@ -37,11 +45,7 @@
             <scope>provided</scope>
             <version>${nifi.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.nifi</groupId>
-            <artifactId>nifi-processor-utils</artifactId>
-            <version>${nifi.version}</version>
-        </dependency>
+        <!-- Test deps -->
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-mock</artifactId>

@@ -22,10 +22,10 @@
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <maven.min-version>3.0.5</maven.min-version>
-        <nifi.version>0.2.1</nifi.version>
+        <nifi.version>1.7.1</nifi.version>
         <slf4j.version>1.7.12</slf4j.version>
     </properties>
 
@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-nar-maven-plugin</artifactId>
-                <version>1.0.1-incubating</version>
+                <version>1.2.0</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>

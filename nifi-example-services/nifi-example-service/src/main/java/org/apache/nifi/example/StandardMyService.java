@@ -16,31 +16,48 @@
  */
 package org.apache.nifi.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnDisabled;
 import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.ValidationResult;
+import org.apache.nifi.components.Validator;
 import org.apache.nifi.controller.AbstractControllerService;
 import org.apache.nifi.controller.ConfigurationContext;
 import org.apache.nifi.processor.exception.ProcessException;
-import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.reporting.InitializationException;
+import org.apache.nifi.ssl.SSLContextService;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Tags({ "example"})
 @CapabilityDescription("Example ControllerService implementation of MyService.")
 public class StandardMyService extends AbstractControllerService implements MyService {
 
+    public static final Validator NON_EMPTY_VALIDATOR = (subject, value, context) -> {
+        return new ValidationResult.Builder()
+                .subject(subject)
+                .input(value)
+                .valid(value != null && !value.isEmpty())
+                .explanation(subject + " cannot be empty")
+                .build();
+    };
+
     public static final PropertyDescriptor MY_PROPERTY = new PropertyDescriptor
             .Builder().name("My Property")
             .description("Example Property")
             .required(true)
-            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .addValidator(NON_EMPTY_VALIDATOR)
+            .build();
+
+    public static final PropertyDescriptor SSL_CONTEXT = new PropertyDescriptor
+            .Builder().name("SSL Context")
+            .description("SSL Context")
+            .addValidator(NON_EMPTY_VALIDATOR)
+            .identifiesControllerService(SSLContextService.class)
             .build();
 
     private static final List<PropertyDescriptor> properties;
@@ -48,6 +65,7 @@ public class StandardMyService extends AbstractControllerService implements MySe
     static {
         final List<PropertyDescriptor> props = new ArrayList<>();
         props.add(MY_PROPERTY);
+        props.add(SSL_CONTEXT);
         properties = Collections.unmodifiableList(props);
     }
 
