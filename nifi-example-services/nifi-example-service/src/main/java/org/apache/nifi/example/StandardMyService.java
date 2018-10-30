@@ -27,7 +27,6 @@ import org.apache.nifi.controller.AbstractControllerService;
 import org.apache.nifi.controller.ConfigurationContext;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.reporting.InitializationException;
-import org.apache.nifi.ssl.SSLContextService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,19 +52,11 @@ public class StandardMyService extends AbstractControllerService implements MySe
             .addValidator(NON_EMPTY_VALIDATOR)
             .build();
 
-    public static final PropertyDescriptor SSL_CONTEXT = new PropertyDescriptor
-            .Builder().name("SSL Context")
-            .description("SSL Context")
-            .addValidator(NON_EMPTY_VALIDATOR)
-            .identifiesControllerService(SSLContextService.class)
-            .build();
-
     private static final List<PropertyDescriptor> properties;
 
     static {
         final List<PropertyDescriptor> props = new ArrayList<>();
         props.add(MY_PROPERTY);
-        props.add(SSL_CONTEXT);
         properties = Collections.unmodifiableList(props);
     }
 
