@@ -19,18 +19,18 @@
     <parent>
         <groupId>org.apache.nifi</groupId>
         <artifactId>nifi-example-services</artifactId>
-        <version>1.0</version>
+        <version>3.0</version>
     </parent>
 
     <artifactId>nifi-example-service-api-nar</artifactId>
-    <version>1.0</version>
+    <version>3.0</version>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-example-service-api</artifactId>
-            <version>1.0</version>
+            <version>3.0</version>
         </dependency>
     </dependencies>
 

@@ -19,24 +19,24 @@
     <parent>
         <groupId>org.apache.nifi</groupId>
         <artifactId>nifi-example-processor-bundle</artifactId>
-        <version>1.0</version>
+        <version>3.0</version>
     </parent>
 
     <artifactId>nifi-example-processors-nar</artifactId>
-    <version>1.0</version>
+    <version>3.0</version>
     <packaging>nar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-example-processors</artifactId>
-            <version>1.0</version>
+            <version>3.0</version>
         </dependency>
         <!-- NAR dependency on the API so the processor can use the service at runtime -->
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-example-service-api-nar</artifactId>
-            <version>1.0</version>
+            <version>3.0</version>
             <type>nar</type>
         </dependency>
     </dependencies>

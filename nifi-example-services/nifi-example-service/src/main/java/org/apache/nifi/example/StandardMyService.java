@@ -85,4 +85,8 @@ public class StandardMyService extends AbstractControllerService implements MySe
 
     }
 
+    @Override
+    public void execute(String foo) throws ProcessException {
+
+    }
 }
