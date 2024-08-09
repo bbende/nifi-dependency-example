@@ -52,6 +52,7 @@ public class MyProcessorTest {
 
         // configure the processor and link it with the service
         testRunner.setProperty(MyProcessor.MY_PROPERTY, "processorProperty");
+        testRunner.setProperty(MyProcessor.EXTRA_PROPERTY, "extraProcessorProperty");
         testRunner.setProperty(MyProcessor.MY_SERVICE, "myService");
         testRunner.run();
     }

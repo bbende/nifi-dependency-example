@@ -65,6 +65,13 @@ public class MyProcessor extends AbstractProcessor {
             .addValidator(NON_EMPTY_VALIDATOR)
             .build();
 
+    public static final PropertyDescriptor EXTRA_PROPERTY = new PropertyDescriptor
+            .Builder().name("Extra Property")
+            .description("Extra Property")
+            .required(true)
+            .addValidator(NON_EMPTY_VALIDATOR)
+            .build();
+
     public static final PropertyDescriptor MY_SERVICE = new PropertyDescriptor
             .Builder().name("My Service")
             .description("Example Controller Service Property")
@@ -85,6 +92,7 @@ public class MyProcessor extends AbstractProcessor {
     protected void init(final ProcessorInitializationContext context) {
         final List<PropertyDescriptor> descriptors = new ArrayList<PropertyDescriptor>();
         descriptors.add(MY_PROPERTY);
+        descriptors.add(EXTRA_PROPERTY);
         descriptors.add(MY_SERVICE);
         this.descriptors = Collections.unmodifiableList(descriptors);
 
